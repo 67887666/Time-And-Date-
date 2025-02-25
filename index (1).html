@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الساعة والتاريخ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 50px;
+            direction: rtl;
+        }
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            background-color: #28a745; /* اللون الأخضر */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 300px;
+            margin-bottom: 20px;
+        }
+        #clock, #date {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        #clock {
+            background-color: #007bff; /* الأزرق */
+            color: white;
+        }
+        #date {
+            background-color: #ffc107; /* الأصفر */
+            color: black;
+        }
+        .whatsapp-btn {
+            background-color: #007bff; /* أزرق */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .whatsapp-btn:hover {
+            background-color: #0056b3; /* أزرق داكن عند التمرير */
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo">MOATAZ</div>
+
+    <div class="container">
+        <div id="clock">00:00:00 AM</div>
+        <div id="date">YYYY-MM-DD</div>
+    </div>
+
+    <a href="https://wa.me/201144218416" class="whatsapp-btn" target="_blank">
+        تواصل عبر الواتساب
+    </a>
+
+    <div class="footer">جميع الحقوق محفوظة © 2025</div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12; 
+            const time = `${hours}:${minutes}:${seconds} ${ampm}`;
+            document.getElementById('clock').textContent = time;
+
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const date = now.toLocaleDateString('ar-EG', options);
+            document.getElementById('date').textContent = date;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); 
+    </script>
+
+</body>
+</html>
